@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato Letter</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="crt-button">[BACK]</a>
+        </header>
+        <main>
+            <section id="letter-content">
+                <!-- Markdown content will be loaded here -->
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Get the letter name from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const letterName = urlParams.get('letter');
+        
+        // Construct the markdown file path
+        const filename = `${letterName}.md`;
+
+        // Fetch and render the markdown
+        fetch(filename)
+            .then(response => response.text())
+            .then(markdown => {
+                document.getElementById('letter-content').innerHTML = marked.parse(markdown);
+            })
+            .catch(error => {
+                console.error('Error loading markdown:', error);
+                document.getElementById('letter-content').innerHTML = '<p class="terminal-text">Error loading letter...</p>';
+            });
+    </script>
+</body>
+</html> 

@@ -3,31 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Portfolio</title>
+    <title>Potato Letters</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="scanline"></div>
     <div class="container">
         <header>
-            <h1 class="glitch" data-text="HELLO WORLD">HELLO WORLD</h1>
+            <h1 class="glitch">POTATO LETTERS</h1>
+            <a href="https://twitter.com/IsaacN0tNewton" class="twitter-link" target="_blank">
+                <svg class="twitter-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                @IsaacN0tNewton
+            </a>
         </header>
         
         <nav>
             <ul>
-                <li><a href="#about">[ABOUT]</a></li>
-                <li><a href="#projects">[PROJECTS]</a></li>
-                <li><a href="#contact">[CONTACT]</a></li>
+                <li><a href="#intro">[INTRO]</a></li>
+                <li><a href="#letters">[LETTERS]</a></li>
             </ul>
         </nav>
 
         <main>
-            <section id="about">
-                <h2>ABOUT.exe</h2>
-                <p>Your description here...</p>
+            <section id="intro">
+                <div id="intro-content">
+                    <!-- Markdown content will be loaded here -->
+                </div>
+            </section>
+
+            <section id="letters">
+                <h2>Letters</h2>
+                <div class="letter-grid">
+                    <article class="letter-card">
+                        <h3>10x0x</h3>
+                        <p>A letter about...</p>
+                        <a href="letters/template.html?letter=10x0x" class="crt-button">[READ]</a>
+                    </article>
+
+                    <article class="letter-card">
+                        <h3>P100</h3>
+                        <p>A letter about...</p>
+                        <a href="letters/template.html?letter=P100" class="crt-button">[READ]</a>
+                    </article>
+                </div>
             </section>
         </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Load intro markdown
+        fetch('letters/intro.md')
+            .then(response => response.text())
+            .then(markdown => {
+                document.getElementById('intro-content').innerHTML = marked.parse(markdown);
+            });
+    </script>
 </body>
 </html> 
