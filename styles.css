@@ -214,4 +214,57 @@ header {
     .letter-grid {
         grid-template-columns: repeat(2, 1fr);  /* Two columns on medium screens */
     }
+}
+
+/* Replace previous potato styles with these simpler styles */
+.potato-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.letter-seal {
+    width: 120px;  /* Bigger base size */
+    height: 120px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+    max-width: 100%;  /* Ensure it doesn't overflow on small screens */
+    height: auto;    /* Maintain aspect ratio */
+}
+
+.letter-seal:hover {
+    opacity: 1;
+}
+
+/* Update mobile styles */
+@media (max-width: 600px) {
+    .letter-seal {
+        width: 100px;  /* Still substantial on mobile */
+    }
+}
+
+/* Update header styles */
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Update letter seal styles for header placement */
+.letter-seal {
+    width: 50px;  /* Smaller size to match header */
+    height: auto;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+/* Update mobile styles */
+@media (max-width: 600px) {
+    .title-container {
+        gap: 0.5rem;
+    }
+
+    .letter-seal {
+        width: 40px;  /* Even smaller on mobile */
+    }
 } 
